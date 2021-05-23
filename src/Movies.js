@@ -11,32 +11,34 @@ const Movies = () => {
     return <div className='loading'></div>;
   }
   return (
-    <section className='movies'>
-      {movies &&
-        movies.map((movie) => {
-          const {
-            imdbID: id,
-            Title: title,
-            Year: year,
-            Type: type,
-            Poster: poster,
-          } = movie;
+    <>
+      <section className='movies'>
+        {movies &&
+          movies.map((movie) => {
+            const {
+              imdbID: id,
+              Title: title,
+              Year: year,
+              Type: type,
+              Poster: poster,
+            } = movie;
 
-          return (
-            <Link to={`/movies/${id}`} key={id} className='movie'>
-              <article>
-                <img src={poster === 'N/A' ? url : poster} alt={title} />
-                <div className='movie-info'>
-                  <h4 className='title'>{title}</h4>
-                  <p>
-                    {year} <span>type: {type}</span>
-                  </p>
-                </div>
-              </article>
-            </Link>
-          );
-        })}
-    </section>
+            return (
+              <Link to={`/movies/${id}`} key={id} className='movie'>
+                <article>
+                  <img src={poster === 'N/A' ? url : poster} alt={title} />
+                  <div className='movie-info'>
+                    <h4 className='title'>{title}</h4>
+                    <p>
+                      {year} <span>type: {type}</span>
+                    </p>
+                  </div>
+                </article>
+              </Link>
+            );
+          })}
+      </section>
+    </>
   );
 };
 

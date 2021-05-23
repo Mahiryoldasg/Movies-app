@@ -6,15 +6,20 @@ function useFetch(urlParams) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({ show: false, msg: '' });
   const [data, setData] = useState(null);
+  const [totalPage, setTotalPage] = useState(1);
 
   const fetchMovies = async (url) => {
     setIsLoading(true);
+
     try {
       const response = await fetch(url);
       const data = await response.json();
 
       if (data.Response === 'True') {
         setData(data.Search || data);
+        if (data.totalResults) {
+          setTotalPage(Math.ceil(Number(data.totalResults) / 10));
+        }
         setError({ show: false, msg: '' });
       } else {
         setError({ show: true, msg: data.Error });
@@ -29,7 +34,7 @@ function useFetch(urlParams) {
     fetchMovies(`${API_ENDPOINT}${urlParams}`);
   }, [urlParams]);
 
-  return { isLoading, error, data };
+  return { isLoading, error, data, totalPage };
 }
 
 export default useFetch;

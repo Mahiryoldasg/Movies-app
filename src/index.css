@@ -38,7 +38,7 @@ Variables
   --clr-black: #222;
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
-  --radius: 0.25rem;
+  --radius: 0.5rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --max-width: 1170px;
@@ -267,16 +267,6 @@ Single Movie
   margin-top: 1.5rem;
   line-height: 1.8;
 }
-.btn {
-  text-transform: capitalize;
-  padding: 0.25rem 0.5rem;
-  background: var(--clr-primary-5);
-  color: var(--clr-white);
-  border-radius: var(--radius);
-  display: inline-block;
-  margin-top: 0.5rem;
-  letter-spacing: var(--spacing);
-}
 @media screen and (min-width: 992px) {
   .single-movie {
     grid-template-columns: 1fr 2fr;
@@ -285,4 +275,45 @@ Single Movie
 .page-error {
   text-align: center;
   padding: 2rem;
+}
+
+/*
+=============== 
+Single Movie
+===============
+*/
+
+.btn {
+  padding: 0.5rem 0.75rem;
+  letter-spacing: 1.6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--clr-white);
+  background: var(--clr-primary-5);
+  border-radius: var(--radius);
+  border-color: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn-container p {
+  color: var(--clr-primary-10);
+  margin: 0 10px;
+  font-weight: bold;
+}
+.btn-container button:disabled {
+  cursor: not-allowed;
+}
+
+@media screen and (min-width: 775px) {
+  .btn-container {
+    margin: 0 auto;
+    max-width: 700px;
+  }
 }
